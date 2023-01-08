@@ -7,21 +7,25 @@ import { PATH } from "../customRouter";
 import Storage from "../storage";
 import images from "../dev/backGroundImg";
 import TodoItemCreator from "../components/todoList/TodoItemCreator";
+import TodoItem from "../components/todoList/TodoItem";
 import Clock from "../components/todoList/Clock";
+import useGetItem from "../hooks/useGetItem";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { data: todoList } = useGetItem();
   const [isCreator, setIsCreator] = useState(false);
   const isLogin = Storage.getToken() ? true : false;
-  const todoList = useRecoilValue(todoListState);
   const [bg, setBg] = useState("");
+  if (todoList === undefined) return null;
 
   useEffect(() => {
     if (!isLogin) {
       navigate(PATH.LOGIN);
     }
     setBg(chosenImage);
-  }, [chosenImage]);
+  }, [isLogin, chosenImage]);
+
   return (
     <Wrapper itemProp={bg}>
       <ContentWrapper>
@@ -30,12 +34,17 @@ const Home = () => {
           TODO 추가하기
         </Creator>
         {isCreator && <TodoItemCreator />}
+        {todoList.map((todoItem) => (
+          <TodoItem item={todoItem} key={todoItem.id} />
+        ))}
       </ContentWrapper>
     </Wrapper>
   );
 };
 const chosenImage = images[Math.floor(Math.random() * images.length)];
 const Wrapper = styled.div`
+  positon: fixed;
+  z-index: 99;
   display: flex;
   justify-content: center;
   align-items: center;
