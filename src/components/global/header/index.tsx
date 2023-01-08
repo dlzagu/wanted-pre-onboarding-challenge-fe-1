@@ -1,11 +1,15 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { PATH } from "../../../customRouter";
 import Storage from "../../../storage";
 import useSetAlert from "../../../hooks/useSetAlert";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const { pathname } = useLocation();
   const isLogin = Storage.getToken() ? true : false;
+  const [isMain, setIsMain] = useState(false);
+
   const navigate = useNavigate();
   const { setAlertSuccess } = useSetAlert();
   const hanldeClickLogout = () => {
@@ -13,14 +17,25 @@ const Header = () => {
     setAlertSuccess({ success: "로그아웃 되었습니다." });
     navigate(PATH.LOGIN);
   };
+  useEffect(() => {
+    if (pathname === PATH.MAIN) {
+      setIsMain(true);
+    } else {
+      setIsMain(false);
+    }
+  }, [pathname]);
   return (
     <HeaderContainer>
       <ContentContainer>
-        <Logo>TODO!</Logo>
+        <Logo itemScope={isMain}>TODO!</Logo>
         {!isLogin ? (
-          <Login onClick={() => navigate(PATH.LOGIN)}>login</Login>
+          <Login onClick={() => navigate(PATH.LOGIN)} itemScope={isMain}>
+            login
+          </Login>
         ) : (
-          <Logout onClick={hanldeClickLogout}>logout</Logout>
+          <Logout onClick={hanldeClickLogout} itemScope={isMain}>
+            logout
+          </Logout>
         )}
       </ContentContainer>
     </HeaderContainer>
@@ -52,11 +67,14 @@ const ContentContainer = styled.nav`
 const Logo = styled.h3`
   ${({ theme }) =>
     theme.mixins.title(theme.fontSemiMedium, theme.weightBold, theme.mainWhite)}
+  color: ${({ theme, itemScope }) =>
+    itemScope ? theme.mainWhite : theme.mainBlack};
 `;
 
 const Login = styled.div`
   cursor: pointer;
-  color: ${({ theme }) => theme.mainWhite};
+  color: ${({ theme, itemScope }) =>
+    itemScope ? theme.mainWhite : theme.mainBlack};
   transition: all 0.5s;
   &:hover {
     color: ${({ theme }) => theme.darkGrey};
@@ -65,7 +83,8 @@ const Login = styled.div`
 
 const Logout = styled.div`
   cursor: pointer;
-  color: ${({ theme }) => theme.mainWhite};
+  color: ${({ theme, itemScope }) =>
+    itemScope ? theme.mainWhite : theme.mainBlack};
   transition: all 0.5s;
   &:hover {
     color: ${({ theme }) => theme.darkGrey};
