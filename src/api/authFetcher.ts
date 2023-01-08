@@ -13,12 +13,12 @@ export async function authRegisterRequest(registerForm: AuthFormInitial) {
 }
 
 export async function authLoginRequest(loginForm: AuthFormInitial) {
-  const res = await customAxios.post("/auth/login", loginForm, {
+  const res = await customAxios.post("/users/login", loginForm, {
     headers: {
       "Content-Type": "application/json",
     },
   });
-  const { result } = res.data;
-  Storage.setToken(result.accessToken);
-  return res.data;
+  const { token, messagae } = res.data;
+  Storage.setToken(token);
+  return messagae;
 }
