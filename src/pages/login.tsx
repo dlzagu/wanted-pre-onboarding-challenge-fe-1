@@ -1,7 +1,12 @@
 import BasePageComponent from "../hoc/BasePageComponent";
+import AuthLogin from "../components/auth/AuthLogin";
 
 const Login = () => {
-  return <BasePageComponent>Login</BasePageComponent>;
+  return (
+    <BasePageComponent>
+      <AuthLogin />
+    </BasePageComponent>
+  );
 };
 
 export default Login;
