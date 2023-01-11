@@ -5,6 +5,7 @@ import ErrorAlert from "../components/errorBoundary/ErrorAlert";
 import ErrorBoundary from "../components/errorBoundary/ErrorBoundary";
 import LoadingCycle from "../components/alert/Loader";
 import Alert from "../components/alert/Alert";
+import AuthCheckHOC from "../hoc/AuthCheckHOC";
 
 const Main = lazy(() => import("../pages/index"));
 const Login = lazy(() => import("../pages/login"));
@@ -19,6 +20,7 @@ export const PATH = {
 };
 
 const CustomRouter = () => {
+  const AuthCheckMain = AuthCheckHOC(Main);
   return (
     <Router>
       <ErrorBoundary fallback={({ error }) => <ErrorAlert error={error} />}>
@@ -26,7 +28,7 @@ const CustomRouter = () => {
         <Alert />
         <Suspense fallback={<LoadingCycle />}>
           <Routes>
-            <Route path={PATH.MAIN} element={<Main />} />
+            <Route path={PATH.MAIN} element={<AuthCheckMain />} />
             <Route path={PATH.LOGIN} element={<Login />} />
             <Route path={PATH.REGISTER} element={<Register />} />
             <Route path={PATH.NOT_FOUND} element={<NotFound />} />
