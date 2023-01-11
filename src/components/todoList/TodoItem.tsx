@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TodoListInitial } from "../../types/todo";
-import useDeleteTodo from "../../hooks/Todo/useDeleteTodo";
+import useDeleteTodo from "../../hooks/todo/useDeleteTodo";
 
 const TodoItem = ({ item }: { item: TodoListInitial }) => {
   const { mutate: deleteTodo } = useDeleteTodo();
