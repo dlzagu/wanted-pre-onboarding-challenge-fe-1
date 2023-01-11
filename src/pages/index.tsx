@@ -1,39 +1,35 @@
+import { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { PATH } from "../customRouter";
-import Storage from "../storage";
 import images from "../dev/backGroundImg";
 import TodoItemCreator from "../components/todoList/TodoItemCreator";
 import TodoItem from "../components/todoList/TodoItem";
 import Clock from "../components/todoList/Clock";
-import useGetTodos from "../hooks/Todo/useGetTodos";
+import useGetTodos from "../hooks/todo/useGetTodos";
+import CustomIcon from "../components/icons/CustomIcon";
 
 const Home = () => {
-  const navigate = useNavigate();
   const { data: todos } = useGetTodos();
   const [isCreator, setIsCreator] = useState(false);
-  const isLogin = Storage.getToken() ? true : false;
   const [bg, setBg] = useState("");
-  if (todos === undefined) return null;
+  const onClickCreator = useCallback(() => {
+    setIsCreator((prev) => !prev);
+  }, [setIsCreator]);
 
   useEffect(() => {
-    if (!isLogin) {
-      navigate(PATH.LOGIN);
-    }
     setBg(chosenImage);
-  }, [isLogin, chosenImage]);
+  }, []);
 
   return (
     <Wrapper itemProp={bg}>
       <ContentWrapper>
         <Clock></Clock>
-        <Creator onClick={() => setIsCreator((prev) => !prev)}>
+        <Creator onClick={onClickCreator}>
           TODO 추가하기
+          <CustomIcon name="click" size="15" />
         </Creator>
         {isCreator && <TodoItemCreator />}
-        {todos.map((todoItem) => (
-          <TodoItem item={todoItem} key={todoItem.id} />
+        {todos?.map((todo) => (
+          <TodoItem item={todo} key={todo.id} />
         ))}
       </ContentWrapper>
     </Wrapper>
