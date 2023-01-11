@@ -24,6 +24,7 @@ import {
   MdOutlineDataUsage,
   MdOutlineFoodBank,
 } from "react-icons/md";
+import { HiCursorClick } from "react-icons/hi";
 import { theme } from "../../styles/theme";
 
 interface CustomIconProps {
@@ -115,6 +116,9 @@ const CustomIcon = ({ name, size, color }: CustomIconProps) => {
 
       case "comunity":
         return <FaPeopleArrows size={size} color={color} />;
+
+      case "click":
+        return <HiCursorClick size={size} color={color} />;
 
       case "quoteLeft":
         return (
