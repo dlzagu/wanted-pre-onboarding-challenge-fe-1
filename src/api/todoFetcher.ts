@@ -1,36 +1,20 @@
 import customAxios from "../util/customAxios";
 import { TodoFormInitial } from "../types/todo";
-import Storage from "../storage";
 
 export async function addTodoRequest(todoForm: TodoFormInitial) {
-  const res = await customAxios.post("/todos", todoForm, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `${Storage.getToken()}`,
-    },
-  });
+  const res = await customAxios.post("/todos", todoForm, {});
 
   return res.data;
 }
 
 export async function getTodoRequest() {
-  const res = await customAxios.get("/todos", {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `${Storage.getToken()}`,
-    },
-  });
+  const { data } = await customAxios.get("/todos");
 
-  return res.data.data;
+  return data.data;
 }
 
 export async function deleteTodoRequest(todoId: string) {
-  const res = await customAxios.delete(`/todos/${todoId}`, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `${Storage.getToken()}`,
-    },
-  });
+  const { data } = await customAxios.delete(`/todos/${todoId}`, {});
 
-  return res.data.data;
+  return data.data;
 }
