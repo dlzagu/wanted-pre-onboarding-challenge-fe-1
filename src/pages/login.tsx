@@ -1,11 +1,11 @@
-import BasePageComponent from "../hoc/BasePageComponent";
+import { PageContainer } from "../styles/commonStyle";
 import AuthLogin from "../components/auth/AuthLogin";
 
 const Login = () => {
   return (
-    <BasePageComponent>
+    <PageContainer>
       <AuthLogin />
-    </BasePageComponent>
+    </PageContainer>
   );
 };
 
