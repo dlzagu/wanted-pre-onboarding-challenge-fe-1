@@ -13,8 +13,8 @@ const NotFound = lazy(() => import("../components/global/NotFound"));
 
 export const PATH = {
   MAIN: "/",
-  LOGIN: "/login",
-  REGISTER: "/register",
+  LOGIN: "/auth/login",
+  REGISTER: "/auth/register",
   NOT_FOUND: "/*",
 };
 

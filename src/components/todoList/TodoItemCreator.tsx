@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { TodoFormInitial } from "../../types/todo";
 import { ErrorMessage, AuthButton } from "../../styles/authStyle";
 import useSetAlert from "../../hooks/useSetAlert";
-import useAddItem from "../../hooks/useAddItem";
+import useAddTodo from "../../hooks/Todo/useAddTodo";
 
 const TodoItemCreator = () => {
   const { setAlertLoading } = useSetAlert();
-  const { mutate: addItem, isLoading } = useAddItem();
+  const { mutate: addTodo, isLoading } = useAddTodo();
   const {
     register,
     handleSubmit,
@@ -19,12 +19,11 @@ const TodoItemCreator = () => {
       content: "",
     },
   });
-
   const onSubmit = handleSubmit((todoForm) => {
     if (isLoading) {
       setAlertLoading({ loading: true });
     }
-    addItem(todoForm);
+    addTodo(todoForm);
   });
 
   return (

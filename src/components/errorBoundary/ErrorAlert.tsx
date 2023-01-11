@@ -6,7 +6,7 @@ import { FallbackProps } from "./ErrorBoundary";
 const ErrorAlert = ({ error, resetErrorBoundary }: FallbackProps) => {
   const navigate = useNavigate();
   const BackButton = () => {
-    return <Button onClick={() => navigate("/")}>back</Button>;
+    return <Button onClick={() => navigate("/")}>Home</Button>;
   };
   return (
     <Container>

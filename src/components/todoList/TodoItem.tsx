@@ -1,13 +1,16 @@
 import styled from "styled-components";
-import useDeleteItem from "../../hooks/useDeleteItem";
 import { TodoListInitial } from "../../types/todo";
+import useDeleteTodo from "../../hooks/Todo/useDeleteTodo";
 
 const TodoItem = ({ item }: { item: TodoListInitial }) => {
-  const { mutate: deleteItem } = useDeleteItem();
+  const { mutate: deleteTodo } = useDeleteTodo();
+  const hanldeClickLogout = () => {
+    deleteTodo(item.id);
+  };
   return (
     <Wrapper>
       <Todo>{item.title}</Todo>
-      <Button onClick={() => deleteItem(item.id)}>❌</Button>
+      <Button onClick={hanldeClickLogout}>❌</Button>
     </Wrapper>
   );
 };

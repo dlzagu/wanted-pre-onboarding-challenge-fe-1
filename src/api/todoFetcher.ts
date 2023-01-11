@@ -2,8 +2,7 @@ import customAxios from "../util/customAxios";
 import { TodoFormInitial } from "../types/todo";
 import Storage from "../storage";
 
-export async function ItemAddRequest(todoForm: TodoFormInitial) {
-  console.log(Storage.getToken(), "sdsd");
+export async function addTodoRequest(todoForm: TodoFormInitial) {
   const res = await customAxios.post("/todos", todoForm, {
     headers: {
       "Content-Type": "application/json",
@@ -14,7 +13,7 @@ export async function ItemAddRequest(todoForm: TodoFormInitial) {
   return res.data;
 }
 
-export async function getTodoList() {
+export async function getTodoRequest() {
   const res = await customAxios.get("/todos", {
     headers: {
       "Content-Type": "application/json",
@@ -25,7 +24,7 @@ export async function getTodoList() {
   return res.data.data;
 }
 
-export async function itemDeleteRequest(todoId: string) {
+export async function deleteTodoRequest(todoId: string) {
   const res = await customAxios.delete(`/todos/${todoId}`, {
     headers: {
       "Content-Type": "application/json",

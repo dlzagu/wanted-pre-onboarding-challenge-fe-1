@@ -2,19 +2,19 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 
 const Clock = () => {
-  const [clock, setClock] = useState("00:00");
-  function getClock() {
+  const [time, setTime] = useState("00:00");
+  function getTime() {
     const date = new Date();
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
 
-    setClock(`${hours}:${minutes}`);
+    setTime(`${hours}:${minutes}`);
   }
 
   useEffect(() => {
-    setInterval(getClock, 1000);
+    setInterval(getTime, 1000);
   });
-  return <Wrapper>{clock}</Wrapper>;
+  return <Wrapper>{time}</Wrapper>;
 };
 
 const Wrapper = styled.div`

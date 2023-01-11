@@ -1,23 +1,21 @@
 import styled from "styled-components";
-import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { todoListState } from "../atom/todoLost";
 import { PATH } from "../customRouter";
 import Storage from "../storage";
 import images from "../dev/backGroundImg";
 import TodoItemCreator from "../components/todoList/TodoItemCreator";
 import TodoItem from "../components/todoList/TodoItem";
 import Clock from "../components/todoList/Clock";
-import useGetItem from "../hooks/useGetItem";
+import useGetTodos from "../hooks/Todo/useGetTodos";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { data: todoList } = useGetItem();
+  const { data: todos } = useGetTodos();
   const [isCreator, setIsCreator] = useState(false);
   const isLogin = Storage.getToken() ? true : false;
   const [bg, setBg] = useState("");
-  if (todoList === undefined) return null;
+  if (todos === undefined) return null;
 
   useEffect(() => {
     if (!isLogin) {
@@ -34,7 +32,7 @@ const Home = () => {
           TODO 추가하기
         </Creator>
         {isCreator && <TodoItemCreator />}
-        {todoList.map((todoItem) => (
+        {todos.map((todoItem) => (
           <TodoItem item={todoItem} key={todoItem.id} />
         ))}
       </ContentWrapper>
