@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+# 원티드 온보딩 챌린지 TodoList!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
 
-## Available Scripts
+## 📃 개요
 
-In the project directory, you can run:
+- 서비스명 : TodoList
+- 개발 기간 : 2023.01.07 ~ 2023.01.08
+- 목표 : CRUD with ReacyQuery 아름다운 구조 학습
+- api  : https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br />
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🔧 기술 스택
 
-### `npm test`
+### Front-End
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<div>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/>
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
+<br />
+<img src="https://img.shields.io/badge/React Query-FF4154?style=flat-square&logo=React Query&logoColor=white"/>
+<img src="https://img.shields.io/badge/styled_components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
+<img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=Axios&logoColor=white"/>
+<img src="https://img.shields.io/badge/Recoil-FAB040?style=flat-square&logo=Recoil&logoColor=white"/>
+<img src="https://img.shields.io/badge/React Hook Form-EC5990?style=flat-square&logo=React Hook Form&logoColor=white"/>
 
-### `npm run build`
+</div>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 프로젝트 소개 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+🎨 <b>간단 소개</b>
+![회원가입](https://user-images.githubusercontent.com/98149429/212046130-a3546d1e-8fa6-4392-b658-e17b40bd1a81.gif)
+> 1. **회원가입**
+![로그인](https://user-images.githubusercontent.com/98149429/212046882-94bc6792-1cec-4adf-9ad7-0f1f3a2c38d0.gif)
+> 2. **로그인**  
+![투두리스트기능](https://user-images.githubusercontent.com/98149429/212047276-30f6c861-58a3-49f9-89c2-6dcf837fef36.gif)
+> 3. **TodoList**  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## ⭐️ 2주 동안의 리팩토링 ⭐️ 
+[노션페이지](https://available-xylophone-c1c.notion.site/12037b2e8d984ee4b3a5f2f2102f9506)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
