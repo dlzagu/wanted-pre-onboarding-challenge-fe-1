@@ -1,40 +1,78 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { TodoListInitial } from "../../types/todo";
 import useDeleteTodo from "../../hooks/todo/useDeleteTodo";
+import CustomIcon from "../icons/CustomIcon";
+import { theme } from "../../styles/theme";
+import TodoItemEdit from "./TodoItemEdit";
 
 const TodoItem = ({ item }: { item: TodoListInitial }) => {
   const { mutate: deleteTodo } = useDeleteTodo();
+  const [isEdit, setIsEdit] = useState(false);
   const hanldeClickLogout = () => {
     deleteTodo(item.id);
   };
+  const { title, content, id } = item;
+  const onClickEditButton = () => {
+    setIsEdit(true);
+  };
   return (
-    <Wrapper>
-      <Todo>{item.title}</Todo>
-      <Button onClick={hanldeClickLogout}>❌</Button>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <TodoContainer>
+          <TodoTitle>{title}</TodoTitle>
+          <TodoContent>{content}</TodoContent>
+        </TodoContainer>
+        <Button onClick={onClickEditButton}>
+          <CustomIcon
+            name="edit"
+            size="25"
+            color={theme.mainWhite}
+          ></CustomIcon>
+        </Button>
+        <Button onClick={hanldeClickLogout}>❌</Button>
+      </Wrapper>
+      {isEdit && (
+        <TodoItemEdit
+          title={title}
+          content={content}
+          id={id}
+          setIsEdit={setIsEdit}
+        />
+      )}
+    </>
   );
 };
 
 const Wrapper = styled.div`
+  ${({ theme }) => theme.mixins.flexBox()}
   width: 100%;
-  display: flex;
-  align-items: center;
   gap: 0.5rem;
   &:not(:first-child) {
-    margin-top: 2rem;
+    margin-top: ${({ theme }) => theme.spacingMedium};
   }
 `;
 
-const Todo = styled.div`
-  flex: 1;
+const TodoContainer = styled.div`
   width: 100%;
-  height: 3.5rem;
-  color: white;
-  border-radius: 0.5rem;
-  border: 0;
-  background-color: transparent;
-  padding: 0 2rem;
-  box-sizing: border-box;
+  ${({ theme }) => theme.mixins.flexBox("column")}
+  gap: ${({ theme }) => theme.spacingSemiMedium};
+`;
+
+const TodoTitle = styled.h3`
+  width: 100%;
+  ${({ theme }) =>
+    theme.mixins.title(theme.fontMedium, theme.weightSemiBold, theme.mainWhite)}
+`;
+const TodoContent = styled.p`
+  width: 100%;
+  padding-left: ${({ theme }) => theme.spacingSemiMedium};
+  ${({ theme }) =>
+    theme.mixins.title(
+      theme.fontSemiMedium,
+      theme.weightSemiBold,
+      theme.lightDarkGrey
+    )};
 `;
 
 const Button = styled.button`
