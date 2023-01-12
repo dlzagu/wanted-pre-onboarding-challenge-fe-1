@@ -37,11 +37,18 @@
 
 
 🎨 <b>간단 소개</b>
+
+
 ![회원가입](https://user-images.githubusercontent.com/98149429/212046130-a3546d1e-8fa6-4392-b658-e17b40bd1a81.gif)
+
 > 1. **회원가입**
+
 ![로그인](https://user-images.githubusercontent.com/98149429/212046882-94bc6792-1cec-4adf-9ad7-0f1f3a2c38d0.gif)
+
 > 2. **로그인**  
+
 ![투두리스트기능](https://user-images.githubusercontent.com/98149429/212047276-30f6c861-58a3-49f9-89c2-6dcf837fef36.gif)
+
 > 3. **TodoList**  
 
 
