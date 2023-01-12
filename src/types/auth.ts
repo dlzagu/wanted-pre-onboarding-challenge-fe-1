@@ -8,8 +8,3 @@ export interface AuthFormInitial {
   image?: Blob;
   endPoint?: string;
 }
-
-export interface EditImageForm {
-  endPoint: string;
-  copress: Blob;
-}

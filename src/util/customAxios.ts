@@ -1,11 +1,12 @@
 import axios from "axios";
-
+import Storage from "../storage";
 const { REACT_APP_SERVER_URL } = process.env;
 
 const customAxios = axios.create({
   baseURL: REACT_APP_SERVER_URL,
   headers: {
     "Content-Type": "application/json",
+    Authorization: `${Storage.getToken()}`,
   },
   timeout: 3000,
 });

@@ -10,6 +10,7 @@ import {
   BsFillClockFill,
   BsSuitHeart,
 } from "react-icons/bs";
+import { MdCreate } from "react-icons/md";
 import { VscTriangleDown, VscTriangleUp } from "react-icons/vsc";
 import { FaCrown, FaPeopleArrows } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
@@ -24,6 +25,7 @@ import {
   MdOutlineDataUsage,
   MdOutlineFoodBank,
 } from "react-icons/md";
+import { HiCursorClick } from "react-icons/hi";
 import { theme } from "../../styles/theme";
 
 interface CustomIconProps {
@@ -115,6 +117,11 @@ const CustomIcon = ({ name, size, color }: CustomIconProps) => {
 
       case "comunity":
         return <FaPeopleArrows size={size} color={color} />;
+
+      case "click":
+        return <HiCursorClick size={size} color={color} />;
+      case "edit":
+        return <MdCreate size={size} color={color} />;
 
       case "quoteLeft":
         return (
