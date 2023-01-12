@@ -30,6 +30,11 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'NanumSquareNeo-Regular';
         background-color: #F7F7F7;
         font-size:1.6rem;
+        background-size: cover;
+        background-position: center center;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+          url( ||
+            "https://user-images.githubusercontent.com/59393359/74718667-0adb8a80-5276-11ea-8bc3-0e36c67cf28a.jpg"});
     }
 
     input, textarea { 

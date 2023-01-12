@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { AuthFormInitial } from "../../types/auth";
-import useSignup from "../../hooks/Auth/useSignup";
+import useSignup from "../../hooks/auth/useSignup";
 import useSetAlert from "../../hooks/useSetAlert";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ import {
 import { PATH } from "../../customRouter";
 
 const AuthRegisterForm = () => {
-  const { mutate: signup, isLoading } = useSignup();
+  const { mutate: signUp, isLoading } = useSignup();
   const { setAlertLoading } = useSetAlert();
   const {
     register,
@@ -35,7 +35,7 @@ const AuthRegisterForm = () => {
     if (isLoading) {
       setAlertLoading({ loading: true });
     }
-    signup(registerForm);
+    signUp(registerForm);
   });
 
   return (

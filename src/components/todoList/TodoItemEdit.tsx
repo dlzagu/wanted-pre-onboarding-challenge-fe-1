@@ -5,11 +5,14 @@ import { ErrorMessage } from "../../styles/authStyle";
 import useSetAlert from "../../hooks/useSetAlert";
 import useAddTodo from "../../hooks/todo/useAddTodo";
 
-const TodoItemCreator = ({
-  setIsCreator,
-}: {
-  setIsCreator: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+interface TodoItemProps {
+  title: string;
+  content: string;
+  id: string;
+  setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const TodoItemEdit = ({ title, content, id, setIsEdit }: TodoItemProps) => {
   const { setAlertLoading } = useSetAlert();
   const { mutate: addTodo, isLoading } = useAddTodo();
   const {
@@ -19,8 +22,8 @@ const TodoItemCreator = ({
   } = useForm<TodoFormInitial>({
     mode: "onChange",
     defaultValues: {
-      title: "",
-      content: "",
+      title,
+      content,
     },
   });
   const onSubmit = handleSubmit((todoForm) => {
@@ -30,35 +33,33 @@ const TodoItemCreator = ({
     addTodo(todoForm);
   });
   const onClickCloseButton = () => {
-    setIsCreator(false);
+    setIsEdit(false);
   };
 
   return (
-    <>
-      <Form onSubmit={onSubmit}>
-        <InputContainer>
-          <Input
-            placeholder="제목"
-            type="title"
-            {...register("title", { required: "제목 입력은 필수입니다." })}
-          />
-          <ErrorMessage>{errors.title?.message}</ErrorMessage>
-        </InputContainer>
-        <InputContainer>
-          <Input
-            placeholder="내용"
-            type="content"
-            {...register("content", { required: "내용 입력은 필수입니다." })}
-          />
-          <ErrorMessage>{errors.content?.message}</ErrorMessage>
-        </InputContainer>
+    <Form onSubmit={onSubmit}>
+      <InputContainer>
+        <Input
+          placeholder="제목"
+          type="title"
+          {...register("title", { required: "제목 입력은 필수입니다." })}
+        />
+        <ErrorMessage>{errors.title?.message}</ErrorMessage>
+      </InputContainer>
+      <InputContainer>
+        <Input
+          placeholder="내용"
+          type="content"
+          {...register("content", { required: "내용 입력은 필수입니다." })}
+        />
+        <ErrorMessage>{errors.content?.message}</ErrorMessage>
+      </InputContainer>
 
-        <CreatorButton type="submit">작성</CreatorButton>
-        <CloseButton type="button" onClick={onClickCloseButton}>
-          닫기
-        </CloseButton>
-      </Form>
-    </>
+      <CreatorButton type="submit">수정</CreatorButton>
+      <CloseButton type="button" onClick={onClickCloseButton}>
+        닫기
+      </CloseButton>
+    </Form>
   );
 };
 
@@ -107,4 +108,4 @@ const CloseButton = styled.button`
     transform: scale(0.98);
   }
 `;
-export default TodoItemCreator;
+export default TodoItemEdit;

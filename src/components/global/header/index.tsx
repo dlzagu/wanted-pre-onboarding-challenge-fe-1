@@ -9,7 +9,6 @@ const Header = () => {
   const { pathname } = useLocation();
   const isLogin = Storage.getToken() ? true : false;
   const [isMain, setIsMain] = useState(false);
-
   const navigate = useNavigate();
   const { setAlertSuccess } = useSetAlert();
   const hanldeClickLogout = () => {

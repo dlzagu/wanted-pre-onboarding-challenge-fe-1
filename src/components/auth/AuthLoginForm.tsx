@@ -10,11 +10,11 @@ import {
   AuthInputContainer,
   ErrorMessage,
 } from "../../styles/authStyle";
-import useLogin from "../../hooks/Auth/useLogin";
+import useLogin from "../../hooks/auth/useLogin";
 import { PATH } from "../../customRouter";
 
 const AuthLoginForm = () => {
-  const { mutate: signup, isLoading } = useLogin();
+  const { mutate: signIn, isLoading } = useLogin();
   const { setAlertLoading } = useSetAlert();
   const {
     register,
@@ -32,7 +32,7 @@ const AuthLoginForm = () => {
     if (isLoading) {
       setAlertLoading({ loading: true });
     }
-    signup(loginForm);
+    signIn(loginForm);
   });
 
   return (
