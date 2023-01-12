@@ -25,9 +25,9 @@ const Home = () => {
         <Clock></Clock>
         <Creator onClick={onClickCreator}>
           TODO 추가하기
-          <CustomIcon name="click" size="15" />
+          <CustomIcon name="click" size="25" />
         </Creator>
-        {isCreator && <TodoItemCreator />}
+        {isCreator && <TodoItemCreator setIsCreator={setIsCreator} />}
         {todos?.map((todo) => (
           <TodoItem item={todo} key={todo.id} />
         ))}
@@ -61,7 +61,7 @@ const ContentWrapper = styled.div`
 const Creator = styled.button`
   background: none;
   appearance: none;
-  width: 50%;
+  width: 40%;
   border: 0;
   font-size: ${({ theme }) => theme.fontMedium};
   color: ${({ theme }) => theme.mainWhite};
