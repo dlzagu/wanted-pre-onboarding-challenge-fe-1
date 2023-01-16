@@ -22,6 +22,9 @@ customAxios.interceptors.request.use(
 
 customAxios.interceptors.response.use(
   (res) => {
+    if (res.data.token) {
+      Storage.setToken(res.data.token);
+    }
     return res;
   },
   (error) => {
