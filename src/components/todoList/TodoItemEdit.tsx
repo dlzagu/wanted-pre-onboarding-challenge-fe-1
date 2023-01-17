@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { TodoFormInitial } from "../../types/todo";
 import { ErrorMessage } from "../../styles/authStyle";
 import useSetAlert from "../../hooks/useSetAlert";
-import useAddTodo from "../../hooks/todo/useAddTodo";
+import useUpdateTodo from "../../hooks/Todo/useUpdateTodo";
 
 interface TodoItemProps {
   title: string;
@@ -12,9 +12,14 @@ interface TodoItemProps {
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TodoItemEdit = ({ title, content, id, setIsEdit }: TodoItemProps) => {
+const TodoItemEdit = ({
+  title,
+  content,
+  id: todoId,
+  setIsEdit,
+}: TodoItemProps) => {
   const { setAlertLoading } = useSetAlert();
-  const { mutate: addTodo, isLoading } = useAddTodo();
+  const { mutate: updateTodo, isLoading } = useUpdateTodo();
   const {
     register,
     handleSubmit,
@@ -30,7 +35,7 @@ const TodoItemEdit = ({ title, content, id, setIsEdit }: TodoItemProps) => {
     if (isLoading) {
       setAlertLoading({ loading: true });
     }
-    addTodo(todoForm);
+    updateTodo({ todoForm, todoId });
   });
   const onClickCloseButton = () => {
     setIsEdit(false);

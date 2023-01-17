@@ -18,3 +18,15 @@ export async function deleteTodoRequest(todoId: string) {
 
   return data.data;
 }
+
+export async function updateTodoRequest({
+  todoForm,
+  todoId,
+}: {
+  todoForm: TodoFormInitial;
+  todoId: string;
+}) {
+  const res = await customAxios.put(`/todos/${todoId}`, todoForm, {});
+
+  return res.data;
+}
