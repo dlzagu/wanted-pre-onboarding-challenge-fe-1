@@ -1,5 +1,4 @@
 import customAxios from "../util/customAxios";
-import Storage from "../storage";
 import { AuthFormInitial } from "../types/auth";
 
 export async function authRegisterRequest(registerForm: AuthFormInitial) {
