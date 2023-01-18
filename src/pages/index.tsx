@@ -4,7 +4,7 @@ import images from "../dev/backGroundImg";
 import TodoItemCreator from "../components/todoList/TodoItemCreator";
 import TodoItem from "../components/todoList/TodoItem";
 import Clock from "../components/todoList/Clock";
-import useGetTodos from "../hooks/todo/useGetTodos";
+import useGetTodos from "../hooks/Todo/useGetTodos";
 import CustomIcon from "../components/icons/CustomIcon";
 
 const Home = () => {

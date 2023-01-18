@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { TodoListInitial } from "../../types/todo";
-import useDeleteTodo from "../../hooks/todo/useDeleteTodo";
+import useDeleteTodo from "../../hooks/Todo/useDeleteTodo";
 import CustomIcon from "../icons/CustomIcon";
 import { theme } from "../../styles/theme";
 import TodoItemEdit from "./TodoItemEdit";

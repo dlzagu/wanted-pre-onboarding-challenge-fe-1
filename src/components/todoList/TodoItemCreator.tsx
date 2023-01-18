@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { TodoFormInitial } from "../../types/todo";
 import { ErrorMessage } from "../../styles/authStyle";
 import useSetAlert from "../../hooks/useSetAlert";
-import useAddTodo from "../../hooks/todo/useAddTodo";
+import useAddTodo from "../../hooks/Todo/useAddTodo";
 
 const TodoItemCreator = ({
   setIsCreator,

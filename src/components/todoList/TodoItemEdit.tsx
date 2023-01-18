@@ -36,6 +36,7 @@ const TodoItemEdit = ({
       setAlertLoading({ loading: true });
     }
     updateTodo({ todoForm, todoId });
+    setIsEdit(false);
   });
   const onClickCloseButton = () => {
     setIsEdit(false);
