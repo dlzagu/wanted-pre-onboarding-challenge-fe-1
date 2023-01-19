@@ -54,7 +54,7 @@ const Wrapper = styled.div`
 `;
 
 const TodoContainer = styled.div`
-  width: 100%;
+  width: 90%;
   ${({ theme }) => theme.mixins.flexBox("column")}
   gap: ${({ theme }) => theme.spacingSemiMedium};
 `;
@@ -63,6 +63,7 @@ const TodoTitle = styled.h3`
   width: 100%;
   ${({ theme }) =>
     theme.mixins.title(theme.fontMedium, theme.weightSemiBold, theme.mainWhite)}
+  ${({ theme }) => theme.ellipsis}
 `;
 const TodoContent = styled.p`
   width: 100%;
@@ -73,6 +74,7 @@ const TodoContent = styled.p`
       theme.weightSemiBold,
       theme.lightDarkGrey
     )};
+  ${({ theme }) => theme.ellipsis}
 `;
 
 const Button = styled.button`
