@@ -28,9 +28,11 @@ const Home = () => {
           <CustomIcon name="click" size="25" />
         </Creator>
         {isCreator && <TodoItemCreator setIsCreator={setIsCreator} />}
-        {todos?.map((todo) => (
-          <TodoItem item={todo} key={todo.id} />
-        ))}
+        <Todos>
+          {todos?.map((todo) => (
+            <TodoItem item={todo} key={todo.id} />
+          ))}
+        </Todos>
       </ContentWrapper>
     </Wrapper>
   );
@@ -54,9 +56,8 @@ const Wrapper = styled.div`
 `;
 const ContentWrapper = styled.div`
   ${({ theme }) => theme.mixins.flexBox("column")};
-  width: 70rem;
+  width: 80rem;
   overflow: auto;
-  padding: 2rem;
 `;
 const Creator = styled.button`
   background: none;
@@ -72,5 +73,24 @@ const Creator = styled.button`
   }
   margin-bottom: ${(props) => props.theme.spacingMedium};
 `;
+const Todos = styled.div`
+  ${({ theme }) => theme.mixins.flexBox("column", "start", "start")}
+  width: 100%;
+  padding: ${(props) => props.theme.spacingSemiMedium};
+  max-height: 45vh;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 1rem; /* 스크롤바의 너비 */
+  }
 
+  &::-webkit-scrollbar-thumb {
+    height: 20%; /* 스크롤바의 길이 */
+    background: ${({ theme }) => theme.mainWhite}; /* 스크롤바의 색상 */
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+  }
+`;
 export default Home;
