@@ -10,7 +10,7 @@ export default function useDeleteTodo() {
   const mutation = useMutation(deleteTodoRequest, {
     onSuccess: () => {
       setAlertSuccess({ success: "삭제성공" });
-      queryClient.invalidateQueries(["todoList"]);
+      queryClient.invalidateQueries(["todos"]);
     },
     onError: (error: ErrorType) => {
       const errorMessage = error.response.data.message;

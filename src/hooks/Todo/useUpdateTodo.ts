@@ -10,7 +10,7 @@ export default function useUpdateTodo() {
   const mutation = useMutation(updateTodoRequest, {
     onSuccess: () => {
       setAlertSuccess({ success: "수정성공" });
-      queryClient.invalidateQueries(["todoList"]);
+      queryClient.invalidateQueries(["todos"]);
     },
     onError: (error: ErrorType) => {
       const errorMessage = error.response.data.message;
