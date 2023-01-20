@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { TodoFormInitial } from "../../types/todo";
 import { ErrorMessage } from "../../styles/authStyle";
 import useSetAlert from "../../hooks/useSetAlert";
-import useAddTodo from "../../hooks/todo/useAddTodo";
+import useUpdateTodo from "../../hooks/Todo/useUpdateTodo";
 
 interface TodoItemProps {
   title: string;
@@ -12,9 +12,14 @@ interface TodoItemProps {
   setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const TodoItemEdit = ({ title, content, id, setIsEdit }: TodoItemProps) => {
+const TodoItemEdit = ({
+  title,
+  content,
+  id: todoId,
+  setIsEdit,
+}: TodoItemProps) => {
   const { setAlertLoading } = useSetAlert();
-  const { mutate: addTodo, isLoading } = useAddTodo();
+  const { mutate: updateTodo, isLoading } = useUpdateTodo();
   const {
     register,
     handleSubmit,
@@ -30,7 +35,8 @@ const TodoItemEdit = ({ title, content, id, setIsEdit }: TodoItemProps) => {
     if (isLoading) {
       setAlertLoading({ loading: true });
     }
-    addTodo(todoForm);
+    updateTodo({ todoForm, todoId });
+    setIsEdit(false);
   });
   const onClickCloseButton = () => {
     setIsEdit(false);
@@ -54,11 +60,12 @@ const TodoItemEdit = ({ title, content, id, setIsEdit }: TodoItemProps) => {
         />
         <ErrorMessage>{errors.content?.message}</ErrorMessage>
       </InputContainer>
-
-      <CreatorButton type="submit">수정</CreatorButton>
-      <CloseButton type="button" onClick={onClickCloseButton}>
-        닫기
-      </CloseButton>
+      <ButtonContainer>
+        <EditButton type="submit">수정</EditButton>
+        <CloseButton type="button" onClick={onClickCloseButton}>
+          닫기
+        </CloseButton>
+      </ButtonContainer>
     </Form>
   );
 };
@@ -87,23 +94,26 @@ const Input = styled.input`
     color: white;
   }
 `;
-const CreatorButton = styled.button`
+const ButtonContainer = styled.div`
+  ${({ theme }) => theme.mixins.flexBox()}
+  width:100%;
+  gap: 2rem;
+`;
+const EditButton = styled.button`
   ${({ theme }) => theme.mixins.mediumButton()};
-  width: 50%;
-  height: 5rem;
-  margin-bottom: ${({ theme }) => theme.spacingSemiMedium};
-  background-color: ${({ theme }) => theme.themeColor};
-  color: ${({ theme }) => theme.mainWhite};
+  width: 30%;
   &:active {
     transform: scale(0.98);
   }
 `;
 const CloseButton = styled.button`
-  ${({ theme }) => theme.mixins.mediumButton()};
-  width: 50%;
-  height: 5rem;
-  background-color: ${({ theme }) => theme.themeColor};
-  color: ${({ theme }) => theme.mainWhite};
+  ${({ theme }) =>
+    theme.mixins.mediumButton(
+      "none",
+      theme.mainWhite,
+      `1px solid ${theme.mainWhite}`
+    )};
+  width: 30%;
   &:active {
     transform: scale(0.98);
   }

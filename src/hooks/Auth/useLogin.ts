@@ -10,8 +10,8 @@ export default function useLogin() {
   const navigate = useNavigate();
 
   const mutation = useMutation(authLoginRequest, {
-    onSuccess: (message) => {
-      setAlertSuccess({ success: message });
+    onSuccess: () => {
+      setAlertSuccess({ success: "로그인 완료" });
       navigate(PATH.MAIN);
     },
     onError: (error: ErrorType) => {

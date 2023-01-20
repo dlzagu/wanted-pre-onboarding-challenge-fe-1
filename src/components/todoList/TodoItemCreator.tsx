@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { TodoFormInitial } from "../../types/todo";
 import { ErrorMessage } from "../../styles/authStyle";
 import useSetAlert from "../../hooks/useSetAlert";
-import useAddTodo from "../../hooks/todo/useAddTodo";
+import useAddTodo from "../../hooks/Todo/useAddTodo";
 
 const TodoItemCreator = ({
   setIsCreator,
@@ -52,11 +52,12 @@ const TodoItemCreator = ({
           />
           <ErrorMessage>{errors.content?.message}</ErrorMessage>
         </InputContainer>
-
-        <CreatorButton type="submit">작성</CreatorButton>
-        <CloseButton type="button" onClick={onClickCloseButton}>
-          닫기
-        </CloseButton>
+        <ButtonContainer>
+          <CreatorButton type="submit">작성</CreatorButton>
+          <CloseButton type="button" onClick={onClickCloseButton}>
+            닫기
+          </CloseButton>
+        </ButtonContainer>
       </Form>
     </>
   );
@@ -66,11 +67,12 @@ const Form = styled.form`
   width: 100%;
   ${({ theme }) => theme.mixins.flexBox("column")}
   gap: 10px;
+  margin-bottom: ${({ theme }) => theme.spacingLarge};
 `;
 const InputContainer = styled.div`
   width: 100%;
   position: relative;
-  margin-bottom: ${(props) => props.theme.spacingMedium};
+  margin-bottom: ${({ theme }) => theme.spacingMedium};
 `;
 
 const Input = styled.input`
@@ -86,23 +88,26 @@ const Input = styled.input`
     color: white;
   }
 `;
+const ButtonContainer = styled.div`
+  ${({ theme }) => theme.mixins.flexBox()}
+  width:100%;
+  gap: 2rem;
+`;
 const CreatorButton = styled.button`
   ${({ theme }) => theme.mixins.mediumButton()};
-  width: 50%;
-  height: 5rem;
-  margin-bottom: ${({ theme }) => theme.spacingSemiMedium};
-  background-color: ${({ theme }) => theme.themeColor};
-  color: ${({ theme }) => theme.mainWhite};
+  width: 30%;
   &:active {
     transform: scale(0.98);
   }
 `;
 const CloseButton = styled.button`
-  ${({ theme }) => theme.mixins.mediumButton()};
-  width: 50%;
-  height: 5rem;
-  background-color: ${({ theme }) => theme.themeColor};
-  color: ${({ theme }) => theme.mainWhite};
+  ${({ theme }) =>
+    theme.mixins.mediumButton(
+      "none",
+      theme.mainWhite,
+      `1px solid ${theme.mainWhite}`
+    )};
+  width: 30%;
   &:active {
     transform: scale(0.98);
   }

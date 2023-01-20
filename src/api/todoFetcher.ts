@@ -7,14 +7,30 @@ export async function addTodoRequest(todoForm: TodoFormInitial) {
   return res.data;
 }
 
-export async function getTodoRequest() {
+export async function getTodosRequest() {
   const { data } = await customAxios.get("/todos");
 
   return data.data;
 }
+export async function getTodoRequest(todoId: string) {
+  const { data } = await customAxios.get(`/todos/${todoId}`);
 
+  return data.data;
+}
 export async function deleteTodoRequest(todoId: string) {
   const { data } = await customAxios.delete(`/todos/${todoId}`, {});
 
   return data.data;
+}
+
+export async function updateTodoRequest({
+  todoForm,
+  todoId,
+}: {
+  todoForm: TodoFormInitial;
+  todoId: string;
+}) {
+  const res = await customAxios.put(`/todos/${todoId}`, todoForm, {});
+
+  return res.data;
 }

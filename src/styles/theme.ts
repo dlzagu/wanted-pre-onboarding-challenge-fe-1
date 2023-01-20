@@ -57,6 +57,11 @@ export const theme = {
     left: 50%;
     transform: translate(-50%, -50%);
   `,
+  ellipsis: css`
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  `,
 };
 
 export const mixins = {

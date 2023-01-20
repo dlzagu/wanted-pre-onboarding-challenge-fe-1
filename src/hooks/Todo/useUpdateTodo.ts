@@ -1,15 +1,15 @@
 import { useMutation, useQueryClient } from "react-query";
 import useSetAlert from "../useSetAlert";
 import { ErrorType } from "../../types/error";
-import { deleteTodoRequest } from "../../api/todoFetcher";
+import { updateTodoRequest } from "../../api/todoFetcher";
 
-export default function useDeleteTodo() {
+export default function useUpdateTodo() {
   const { setAlertSuccess, setAlertError } = useSetAlert();
   const queryClient = useQueryClient();
 
-  const mutation = useMutation(deleteTodoRequest, {
+  const mutation = useMutation(updateTodoRequest, {
     onSuccess: () => {
-      setAlertSuccess({ success: "삭제성공" });
+      setAlertSuccess({ success: "수정성공" });
       queryClient.invalidateQueries(["todos"]);
     },
     onError: (error: ErrorType) => {
