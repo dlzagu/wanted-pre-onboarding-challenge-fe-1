@@ -14,7 +14,7 @@ import { MdCreate } from "react-icons/md";
 import { VscTriangleDown, VscTriangleUp } from "react-icons/vsc";
 import { FaCrown, FaPeopleArrows } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
-import { BiRefresh } from "react-icons/bi";
+import { BiRefresh, BiDetail } from "react-icons/bi";
 import { GrFormPrevious, GrFormNext, GrClose } from "react-icons/gr";
 import { FcPlus } from "react-icons/fc";
 import { AiOutlineUpload } from "react-icons/ai";
@@ -120,8 +120,12 @@ const CustomIcon = ({ name, size, color }: CustomIconProps) => {
 
       case "click":
         return <HiCursorClick size={size} color={color} />;
+
       case "edit":
         return <MdCreate size={size} color={color} />;
+
+      case "detail":
+        return <BiDetail size={size} color={color} />;
 
       case "quoteLeft":
         return (
