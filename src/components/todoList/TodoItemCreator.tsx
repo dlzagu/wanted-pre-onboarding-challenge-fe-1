@@ -101,7 +101,12 @@ const CreatorButton = styled.button`
   }
 `;
 const CloseButton = styled.button`
-  ${({ theme }) => theme.mixins.mediumButton(theme.darkGrey)};
+  ${({ theme }) =>
+    theme.mixins.mediumButton(
+      "none",
+      theme.mainWhite,
+      `1px solid ${theme.mainWhite}`
+    )};
   width: 30%;
   &:active {
     transform: scale(0.98);
