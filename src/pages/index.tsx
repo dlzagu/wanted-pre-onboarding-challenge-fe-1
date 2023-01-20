@@ -90,7 +90,7 @@ const Todos = styled.div`
   }
 
   &::-webkit-scrollbar-track {
-    background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+    background: none; /*스크롤바 뒷 배경 색상*/
   }
 `;
 export default Home;
